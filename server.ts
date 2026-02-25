@@ -6,11 +6,21 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import fs from "fs";
 
 dotenv.config();
 
 const dbPath =
   process.env.NODE_ENV === "production" ? "/app/data/tasks.db" : "tasks.db";
+
+// Ensure directory exists for production
+if (process.env.NODE_ENV === "production") {
+  const dir = path.dirname(dbPath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
 const db = new Database(dbPath);
 
 // Initialize Database
