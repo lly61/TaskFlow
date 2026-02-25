@@ -9,7 +9,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const db = new Database("tasks.db");
+const dbPath =
+  process.env.NODE_ENV === "production" ? "/app/data/tasks.db" : "tasks.db";
+const db = new Database(dbPath);
 
 // Initialize Database
 db.exec(`
