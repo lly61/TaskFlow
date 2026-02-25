@@ -1,0 +1,5 @@
+{
+  "name": "TaskFlow Full-Stack",
+  "description": "A comprehensive task management application with user authentication, built with Express, SQLite, and React.",
+  "requestFramePermissions": []
+}
